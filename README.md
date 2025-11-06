@@ -1,5 +1,5 @@
-# Incentives AI Challenge
-
+# Augusta Labs AI Challenge
+By: João Raposo
 Hybrid RAG system for matching Portuguese companies with public incentives.
 
 ## Architecture
@@ -9,7 +9,14 @@ Hybrid RAG system for matching Portuguese companies with public incentives.
 - **LLM**: Configurable via `CHAT_MODEL` (default: `gpt-4o-mini`)
 - **API**: FastAPI with streaming SSE support
 - **Vector Index**: VectorChord's for efficient ANN search
-
+- 
+## TODO | WHAT I WOULD ADD 
+- Expand company data by performing scraping/querying data from aggregators (like Racius, eInforma) to extract how old the company is, aproximate revenue, location, etc. To better filter the elegibility criteria
+- Do a better UI, ended up testing it with Swagger and Insomnia
+- Setup a web search MCP so that the LLM could query the top-K companies' info to inform the matching
+- Ended up discarding hard criteria due to the lack of tags and no time to set them up
+- Add trigram index to the various fields of the incentives, to allow specific incentive search without using semantic search (adding the id fields into the embedding degraded performance)
+- 
 ## Setup
 
 ### 1. Install Dependencies
@@ -226,11 +233,4 @@ All settings are configurable via environment variables:
 ###  Data Assumptions
 
 - Semantic search is primary matcher; hard filters are best-effort
-- Trigram indexes help with fuzzy company name search
-
-## TODO/ WHAT I WOULD ADD 
-- Expand company data by performing scraping/querying data from aggregators (like Racius, eInforma) to extract how old the company is, aproximate revenue, location, etc. To better filter the elegibility criteria
-- Do a better UI, ended up testing it with Swagger and Insomnia
-- Setup a web search MCP so that the LLM could query the top K companies' info to inform the matching
-- Ended up discarding hard criteria due to the lack of tags and no time to set them up
-- Add trigram index to the various fields of the incentives, to allow specific incentive search without using semantic search (and adding id fields into embedding with degraded performance)
+- Trigram indexes help with fuzzy name/id search
