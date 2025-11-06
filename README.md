@@ -1,5 +1,7 @@
 # Augusta Labs AI Challenge
+
 By: João Raposo
+
 Hybrid RAG system for matching Portuguese companies with public incentives.
 
 ## Architecture
